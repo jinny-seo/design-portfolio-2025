@@ -11,15 +11,15 @@ export const ResumeSection = () => {
                 <NotebookPaperContainer notebookPaperBg={false}>
                     <div className="flex mt-[4.5rem]">
                         <h2 className="flex-1 font-Doto -mb-[0.4rem] text-[1.8rem] lg:text-[2rem]">Resume</h2>
-                        <a 
-                            href="/seo-resume.pdf" 
-                            target="_blank" 
-                            rel="noopener noreferrer" 
+                        <a
+                            href="/seo-resume.pdf"
+                            target="_blank"
+                            rel="noopener noreferrer"
                             className="flex items-center gap-2 -mb-[0.84rem] font-Doto text-blue-800 hover:underline "
                         >
                         {/* <div className="flex items-center gap-2 px-6"> */}
                             <Image src={icon.download} alt="" width={13.5} height={13.5}/>
-                            <p className="mt-[0.1rem]">View PDF</p>    
+                            <p className="mt-[0.1rem]">View PDF</p>
                         {/* </div> */}
                         </a>
                     </div>
@@ -29,59 +29,67 @@ export const ResumeSection = () => {
                 <NotebookPaperContainer>
                     <div className="mt-[1.8rem] aspect-[8/11]">
                         <div className="flex flex-col gap-[1.8rem] pt-[0.5rem] pb-[3rem]">
-                            <ResumeExperience 
-                            company="Mimic"
-                            title="Senior Product Designer"
-                            startDate="12/2023"
-                            endDate="02/2025"
+                            <ResumeExperience
+                            company="Pump"
+                            title="Founding Product Design Lead"
+                            startDate="6/2025"
+                            endDate="Present"
                             items={[
-                                "One of two founding designers at a cybersecurity startup, supporting company growth from $27M to $70M+ in funding",
-                                "Delivered MVP in 8 months, securing U.S. government and Fortune 500 clients like REI",
-                                "Established design system and brand identity and ensured WCAG compliance on the public-facing website",
+                                "Led design from 0 to 1 across cloud optimization, cost reporting, and onboarding as the company’s first and sole product designer, translating complex infrastructure data into clear workflows and data visualizations",
+                                "Built reusable design system components in Figma and React, shipping production code to accelerate implementation and improve UI quality",
+                                "Partnered with sales, operations, and customers to identify product gaps, shape requirements, and prioritize new features",
                             ]}
                             />
-                            <ResumeExperience 
+                            <ResumeExperience
+                            company="Mimic"
+                            title="Founding Product Designer"
+                            startDate="12/2023"
+                            endDate="2/2025"
+                            items={[
+                                "One of two founding designers at a cybersecurity startup, which grew from $27M to $70M+ in funding",
+                                "Established design system and brand identity from scratch while shipping MVP to secure U.S. government and Fortune 500 clients like REI",
+                                "Ensured WCAG compliance on the public-facing marketing website",
+                            ]}
+                            />
+                            <ResumeExperience
                             company="Crayon"
                             title="Senior UX Designer"
-                            startDate="01/2022"
-                            endDate="04/2023"
+                            startDate="1/2022"
+                            endDate="4/2023"
                             items={[
-                                "Led platform-wide redesign of the navigation, onboarding, and integrations to improve user workflows",
-                                "Shipped improvements to daily alerts and email clarity, helping users understand key feature values of the platform",
-                                "Collaborated with development to create company’s first component library",
+                                "Led platform-wide redesign of the navigation, onboarding, and integrations",
+                                "Partnered with product, sales, and customer success to discover user needs",
+                                "Collaborated with engineers to create company’s first component library",
                             ]}
                             />
-                            <ResumeExperience 
+                            <ResumeExperience
                             company="projekt202"
                             title="Experience Designer"
-                            startDate="08/2018"
+                            startDate="8/2018"
                             endDate="12/2021"
-                            items={[  
-                                "Delivered complex B2B enterprise consulting engagements for eight companies across healthcare, financial services, and more",
-                                "Built and maintained design systems for complex enterprise solutions",
-                                "Created company-wide audit process for accessibility engagements and internal education materials",
+                            items={[
+                                "Consulted on eight enterprise engagements across customer service, tax, healthcare, and pharmaceutical distribution",
+                                "Created the company’s first standardized WCAG audit framework, expanding the firm’s paid accessibility engagements",
                             ]}
-                            />  
-                            <ResumeExperience 
+                            />
+                            <ResumeExperience
                             company="Sabre Labs"
                             title="R&D UX Designer"
-                            startDate="07/2016"
-                            endDate="08/2018"
+                            startDate="7/2016"
+                            endDate="8/2018"
                             items={[
-
-                                "Created interactive prototypes to explore future tech applications in the travel and hospitality space",
-                                "Produced tech trend reports with custom illustrations to communicate R&D insights",
-                                "Published industry-first chatbot guidelines with 100k+ views and 2k+ likes",
+                                "Created interactive prototypes to explore applications of emerging technology in the travel space with a small innovations lab",
+                                "Published industry-first chatbot guidelines with 100K+ views and 2K+ likes",
                             ]}
                             />
 
                             <span className="font-Doto text-[1.45rem] leading-[1.8rem]">Education</span>
-                            <ResumeExperience 
+                            <ResumeExperience
                             company="Dartmouth College"
                             startDate="2012"
                             endDate="2016"
                             items={[
-                                "B.A. in Studio Art", 
+                                "B.A. in Studio Art with a concentration in painting",
                                 "Minors in Computer Science and Digital Art"
                             ]}
                             />

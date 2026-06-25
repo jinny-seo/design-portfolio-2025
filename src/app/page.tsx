@@ -74,6 +74,9 @@ export default function Home() {
               <span className="font-Doto text-[1.1rem]">Product</span>
               <ul className="grid grid-cols-1 gap-x-[0.5rem] list-inside ">
                 <li className="relative pl-5 before:content-['-'] before:absolute before:left-[0.2em] before:top-0">
+                  Design systems
+                </li>
+                <li className="relative pl-5 before:content-['-'] before:absolute before:left-[0.2em] before:top-0">
                   Interaction design
                 </li>
                 <li className="relative pl-5 before:content-['-'] before:absolute before:left-[0.2em] before:top-0">
@@ -86,10 +89,7 @@ export default function Home() {
                   User testing
                 </li>
                 <li className="relative pl-5 before:content-['-'] before:absolute before:left-[0.2em] before:top-0">
-                  Design systems
-                </li>
-                <li className="relative pl-5 before:content-['-'] before:absolute before:left-[0.2em] before:top-0">
-                  Accessibility
+                  Accessibility/WCAG
                 </li>
               </ul>
             </div>
@@ -102,7 +102,7 @@ export default function Home() {
                     Figma
                   </li>
                   <li className="relative pl-5 before:content-['-'] before:absolute before:left-[0.2em] before:top-0">
-                    Sketch
+                    Framer
                   </li>
                   <li className="relative pl-5 before:content-['-'] before:absolute before:left-[0.2em] before:top-0">
                     Illustrator
@@ -127,19 +127,13 @@ export default function Home() {
                   HTML/CSS
                 </li>
                 <li className="relative pl-5 before:content-['-'] before:absolute before:left-[0.2em] before:top-0">
-                  JavaScript
-                </li>
-                <li className="relative pl-5 before:content-['-'] before:absolute before:left-[0.2em] before:top-0">
-                  TypeScript
-                </li>
-                <li className="relative pl-5 before:content-['-'] before:absolute before:left-[0.2em] before:top-0">
-                  React
-                </li>
-                <li className="relative pl-5 before:content-['-'] before:absolute before:left-[0.2em] before:top-0">
-                  NextJS
+                  React/TypeScript
                 </li>
                 <li className="relative pl-5 before:content-['-'] before:absolute before:left-[0.2em] before:top-0">
                   Tailwind
+                </li>
+                <li className="relative pl-5 before:content-['-'] before:absolute before:left-[0.2em] before:top-0">
+                  Shadcn/UI
                 </li>
               </ul>
             </div>
