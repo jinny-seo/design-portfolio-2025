@@ -4,6 +4,7 @@ import projCrayon from './project/Crayon_hero-dropdown.png';
 import projCrayonSecondary from './project/Crayon_hero-insights.png';
 import projMimic from './project/Mimic_hero.png';
 import projMimicSecondary from './project/Mimic_hero-node-degraded.png';
+import projPumpHero from './project-pump/Pump_hero.png';
 import projETC from './project/proj-etc.png';
 import projRyan from './project/proj-ryan.png';
 import projOM from './project/proj-om.png';
@@ -11,6 +12,16 @@ import projOM from './project/proj-om.png';
 
 
 export const projAssets = [
+    {
+        name: "Designing Pump from the ground up",
+        company: "Pump",
+        date: "06/2025 — Present",
+        duration: "Ongoing",
+        description: "Founding product designer shaping cloud cost optimization, security, and reporting workflows",
+        link: "pump",
+        image: projPumpHero,
+        imageSecondary: projPumpHero,
+    },
     {
         name: "Building a cybersecurity platform from the ground up",
         company: "Mimic",
