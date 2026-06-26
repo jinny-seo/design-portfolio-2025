@@ -171,9 +171,112 @@ body {
 }
 
 .bg-notebook {
-  background-image: 
+  background-image:
       linear-gradient(rgba(53, 180, 245, 0.2) .1em, transparent .1em);
   background-size: 1.8em 1.8em;
+}
+
+/* ---------------------------- */
+/* ---- Animated gradient ----- */
+/* ---------------------------- */
+@keyframes gradientFlow {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+/* Fixed full-viewport gradient backdrop (stays put on scroll, incl. the hero) */
+.gradient-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background: linear-gradient(-40deg, #c3ede7, #b7cbf2, #c3b4ef, #cabbf0, #b7cbf2);
+  background-size: 175% 175%;
+  animation: gradientFlow 40s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .gradient-backdrop { animation: none; }
+}
+
+/* ---------------------------- */
+/* ----- Sparkle cursor ------- */
+/* ---------------------------- */
+.sparkle-cursor-active,
+.sparkle-cursor-active * { cursor: none !important; }
+
+.cursor-orb {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 24px;
+  height: 24px;
+  border-radius: 9999px;
+  background: radial-gradient(circle at 35% 30%, #b9f5ea, #a9c6f5 38%, #c9a9f2 68%, #f6b1e0);
+  box-shadow: 0 0 14px 2px rgba(201, 169, 242, 0.65);
+  pointer-events: none;
+  z-index: 99999;
+  will-change: transform;
+}
+
+.sparkle {
+  position: fixed;
+  pointer-events: none;
+  z-index: 99998;
+  background: currentColor;
+  clip-path: polygon(50% 0%, 61% 39%, 100% 50%, 61% 61%, 50% 100%, 39% 61%, 0% 50%, 39% 39%);
+  filter: drop-shadow(0 0 3px currentColor);
+  animation: sparkleTrail 0.85s ease-out forwards;
+}
+@keyframes sparkleTrail {
+  0%   { transform: translate(0, 0) scale(0) rotate(0deg); opacity: 0; }
+  20%  { opacity: 1; }
+  100% { transform: translate(var(--dx), var(--dy)) scale(1.1) rotate(80deg); opacity: 0; }
+}
+
+/* ---------------------------- */
+/* -------- Star field -------- */
+/* ---------------------------- */
+.starfield {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  -webkit-mask-image: linear-gradient(to top, #000 0%, #000 18%, transparent 50%);
+  mask-image: linear-gradient(to top, #000 0%, #000 18%, transparent 50%);
+}
+.star {
+  position: absolute;
+  border-radius: 9999px;
+  background: #ffffff;
+  box-shadow: 0 0 4px 1px rgba(255, 255, 255, 0.8);
+  animation-name: twinkle;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+@keyframes twinkle {
+  0%, 100% { opacity: 0.25; }
+  50%      { opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .star { animation: none; opacity: 0.6; }
+}
+
+/* Fade the resume section in once it scrolls into view */
+[data-fade-section] {
+  opacity: 0;
+  transition: opacity 1.1s ease;
+}
+[data-fade-section].is-visible {
+  opacity: 1;
+}
+
+/* WordArt-style rainbow text */
+.wordart {
+  background-image: linear-gradient(90deg, #ec3b8b, #f7901e, #f5d020, #5bbf3a, #16b5a6, #2e7de0, #7b3ff2, #c13ad6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  filter: drop-shadow(2px 2px 0 rgba(0, 0, 0, 0.18));
 }
 
 /* ---------------------------- */

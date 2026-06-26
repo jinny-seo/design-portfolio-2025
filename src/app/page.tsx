@@ -2,32 +2,50 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { Navigation } from "@/components/Navigation";
-import { activeScroll } from "@/utils/activeScroll";
 import { projAssets } from "@/assets/projAssets";
 import { ProjectItem } from "@/components/ProjectItem";
 import { HeroSection } from "@/sections/HeroSection";
 import { SectionTitle } from "@/sections/SectionTitle";
-import { ResumeSection } from "@/sections/ResumeSection";
 
 export default function Home() {
-  const isNavVisible = activeScroll();
+
+  // Fade each project's description popover as the next project stacks over it
+  useEffect(() => {
+    const cards = Array.from(document.querySelectorAll<HTMLElement>('[id^="project-"]'));
+    const update = () => {
+      cards.forEach((card, i) => {
+        const popover = card.querySelector<HTMLElement>('[data-project-popover]');
+        if (!popover) return;
+        const next = cards[i + 1];
+        if (!next) { popover.style.opacity = '1'; return; }
+        const stuckTop = 80 + i * 44;
+        const nextTop = next.getBoundingClientRect().top;
+        const o = Math.max(0, Math.min(1, (nextTop - (stuckTop + 60)) / 220));
+        popover.style.opacity = String(o);
+      });
+    };
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    return () => {
+      window.removeEventListener('scroll', update);
+      window.removeEventListener('resize', update);
+    };
+  }, []);
+
   return (
     <main className="flex flex-col w-full ">
       
       {/* Navigation: START */}
-      <div className={`${isNavVisible ? "-translate-y-[10%]" : "translate-y-[120%]"} transition-transform duration-300 
-      fixed flex justify-center bottom-0 left-0 right-0 z-10
-      lg:translate-y-0 lg:justify-end md:m-4`}>
-        <div className="bg-purple-200/20 backdrop-blur-lg rounded-lg border-purple-400 border-none">
-          <Navigation/>
-        </div>
+      <div className="fixed flex justify-center bottom-0 left-0 right-0 z-20 lg:justify-end md:m-4">
+        <Navigation/>
       </div>
       {/* Navigation: END */}
 
       {/* Hero: START */}
       <div className="h-[100vh]">
-      <div className="bg-hero-grid ">
-        <div className="bg-hero-gradient">
+      <div>
+        <div>
           <HeroSection/>
         </div>
       </div>
@@ -45,7 +63,13 @@ export default function Home() {
                 const nextProjLink =
                   index < projAssets.length - 1 ? `#project-${projAssets[index + 1].link}` : null;
                 return (
-                  <div key={project.name} id={`project-${project.link}`} className="pt-[1rem] md:pt-[2rem] pb-[2rem] md:pb-[4rem] ">
+                  <div
+                    key={project.name}
+                    id={`project-${project.link}`}
+                    className="md:sticky md:top-[5rem] pb-[2rem] md:pb-[8rem]"
+                    style={{ "--dx": `${index * 1.5}rem`, "--dy": `${index * 2.75}rem` }}
+                  >
+                    <div className="md:translate-x-[var(--dx)] md:translate-y-[var(--dy)]">
                     <ProjectItem
                       name={project.name}
                       company={project.company}
@@ -56,94 +80,15 @@ export default function Home() {
                       prevProjLink={prevProjLink}
                       nextProjLink={nextProjLink}
                     />
+                    </div>
                   </div>
                 );
             })}
+            {/* Hold the cascade frozen for a beat at the end */}
+            <div className="hidden md:block h-[70vh]" aria-hidden />
           </div>
-        </div>
-        {/* Work: END */}
 
-        {/* Resume: START */}
-        <section id="resume" className="hidden md:block py-container">
-          <ResumeSection/>
-
-          <div className="grid grid-cols-3 gap-x-1 py-12 lg:mr-[13rem] xl:mr-[16rem] lg:max-w-[800px] justify-center">
-            <div className="col-span-1">
-
-            <div className="bg-green-200/70 border-orange-300/50 border-[0.05em] flex flex-col gap-y-2 px-[1.8em] py-[1.5em] w-[16em] h-[16em] aspect-[1] rotate-2 shadow-lg">
-              <span className="font-Doto text-[1.1rem]">Product</span>
-              <ul className="grid grid-cols-1 gap-x-[0.5rem] list-inside ">
-                <li className="relative pl-5 before:content-['-'] before:absolute before:left-[0.2em] before:top-0">
-                  Design systems
-                </li>
-                <li className="relative pl-5 before:content-['-'] before:absolute before:left-[0.2em] before:top-0">
-                  Interaction design
-                </li>
-                <li className="relative pl-5 before:content-['-'] before:absolute before:left-[0.2em] before:top-0">
-                  Prototyping
-                </li>
-                <li className="relative pl-5 before:content-['-'] before:absolute before:left-[0.2em] before:top-0">
-                  User research
-                </li>
-                <li className="relative pl-5 before:content-['-'] before:absolute before:left-[0.2em] before:top-0">
-                  User testing
-                </li>
-                <li className="relative pl-5 before:content-['-'] before:absolute before:left-[0.2em] before:top-0">
-                  Accessibility/WCAG
-                </li>
-              </ul>
-            </div>
-            </div>
-            <div className="mt-4 col-span-1">
-              <div className="bg-yellow-200/80 border-yellow-300/50 border-[0.05em] flex flex-col gap-y-2 px-[1.8em] py-[1.5em] w-[16em] h-[16em] aspect-[1] -rotate-3 shadow-lg">
-                <span className="font-Doto text-[1.1rem]">Design</span>
-                <ul className="grid grid-cols-1 gap-x-[0.5rem] list-inside ">
-                  <li className="relative pl-5 before:content-['-'] before:absolute before:left-[0.2em] before:top-0">
-                    Figma
-                  </li>
-                  <li className="relative pl-5 before:content-['-'] before:absolute before:left-[0.2em] before:top-0">
-                    Framer
-                  </li>
-                  <li className="relative pl-5 before:content-['-'] before:absolute before:left-[0.2em] before:top-0">
-                    Illustrator
-                  </li>
-                  <li className="relative pl-5 before:content-['-'] before:absolute before:left-[0.2em] before:top-0">
-                    Photoshop
-                  </li>
-                  <li className="relative pl-5 before:content-['-'] before:absolute before:left-[0.2em] before:top-0">
-                    After Effects
-                  </li>
-                  <li className="relative pl-5 before:content-['-'] before:absolute before:left-[0.2em] before:top-0">
-                    InDesign
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div className="col-span-1 ">
-            <div className="bg-red-200 border-red-300/50 border-[0.05em] flex flex-col gap-y-2 px-[1.8em] py-[1.5em] w-[16em] h-[16em] aspect-[1] rotate-2 shadow-lg md:-ml-8 lg:-ml-4">
-              <span className="font-Doto text-[1.1rem]">Code</span>
-              <ul className="grid grid-cols-1 gap-x-[0.5rem] list-inside ">
-                <li className="relative pl-5 before:content-['-'] before:absolute before:left-[0.2em] before:top-0">
-                  HTML/CSS
-                </li>
-                <li className="relative pl-5 before:content-['-'] before:absolute before:left-[0.2em] before:top-0">
-                  React/TypeScript
-                </li>
-                <li className="relative pl-5 before:content-['-'] before:absolute before:left-[0.2em] before:top-0">
-                  Tailwind
-                </li>
-                <li className="relative pl-5 before:content-['-'] before:absolute before:left-[0.2em] before:top-0">
-                  Shadcn/UI
-                </li>
-              </ul>
-            </div>
-            </div>
-
-          </div>
-        </section>
-        {/* Resume: END */}
-
-        {/* Footer: START */}
+          {/* Footer — part of the Work section */}
         <footer className="py-[7rem] lg:pt-[4rem] lg:pb-[0rem]">
           <div className="flex flex-col py-container gap-6 md:gap-8 lg:gap-10 items-center lg:items-start">
             <p className="font-Doto text-[1.15rem] md:text-[1.2rem] lg:text-[1.3rem]">. . .</p>
@@ -173,7 +118,10 @@ export default function Home() {
             </div>
           </div>
         </footer>
-        {/* Footer: END */}
+        </div>
+        {/* Work: END */}
+
+
       </div>     
     </main>
   );

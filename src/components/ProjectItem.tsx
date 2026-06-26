@@ -39,8 +39,8 @@ export const ProjectItem: React.FC<ProjectItemProps> = ({name, company, descript
                 {/* Show description and nav buttons when screen size is small: END */}
             </Windows95FrameOuter>
             
-            <div className="hidden md:block">
-                <div className="absolute bottom-[12%] 
+            <div data-project-popover className="hidden md:block transition-opacity duration-150">
+                <div className="absolute bottom-[12%]
                 -right-[5rem] lg:-right-[3.5rem] xl:-right-[5rem] 
                 w-[26rem] xl:w-[28rem]">
                     <Windows95FrameOuter label={company} date={date}>

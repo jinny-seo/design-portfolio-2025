@@ -10,7 +10,7 @@ export const ResumeSection = () => {
             <div className="bg-white shadow-lg lg:mr-[13rem] xl:mr-[16rem] lg:max-w-[800px]">
                 <NotebookPaperContainer notebookPaperBg={false}>
                     <div className="flex mt-[4.5rem]">
-                        <h2 className="flex-1 font-Doto -mb-[0.4rem] text-[1.8rem] lg:text-[2rem]">Resume</h2>
+                        <h2 className="wordart flex-1 font-Doto -mb-[0.4rem] text-[1.8rem] lg:text-[2rem]">Resume</h2>
                         <a
                             href="/seo-resume.pdf"
                             target="_blank"

@@ -7,7 +7,7 @@ import CaseStudyNavBottom from "@/components/CaseStudyNavBottom";
 
 export default function ProjectsLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="bg-hero-grid">
+    <div>
     <div className="mx-auto max-w-[1100px] p-container ">
       
       <Windows95FrameOuter>

@@ -2,6 +2,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Windows95FrameOuter from "@/components/Windows95FrameOuter";
+import SparkleCursor from "@/components/SparkleCursor";
+import StarField from "@/components/StarField";
 
 
 export const  metadata: Metadata = {
@@ -39,10 +41,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth ">
-      <body className={`antialiased bg-purple-200 `}>
-          {/* <div className={`bg-red-200 md:bg-yellow-200 lg:bg-green-200 xl:bg-blue-200 2xl:bg-purple-200 `}>
-            {children}
-          </div> */}
+      <body className={`antialiased `}>
+          <div className="gradient-backdrop" aria-hidden="true" />
+          <StarField />
+          <SparkleCursor />
           {children}
 
       </body>
