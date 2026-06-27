@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { Navigation } from "@/components/Navigation";
 import { projAssets } from "@/assets/projAssets";
@@ -20,7 +20,7 @@ export default function Home() {
         if (!next) { popover.style.opacity = '1'; return; }
         const stuckTop = 80 + i * 44;
         const nextTop = next.getBoundingClientRect().top;
-        const o = Math.max(0, Math.min(1, (nextTop - (stuckTop + 60)) / 220));
+        const o = Math.max(0, Math.min(1, (nextTop - (stuckTop + 160)) / 220));
         popover.style.opacity = String(o);
       });
     };
@@ -59,17 +59,20 @@ export default function Home() {
             <SectionTitle title="Work"/>
             {projAssets.map( (project, index) => {
                 const prevProjLink =
-                  index > 0 ? `#project-${projAssets[index - 1].link}` : null;
+                  index > 0 ? `#anchor-${projAssets[index - 1].link}` : null;
                 const nextProjLink =
-                  index < projAssets.length - 1 ? `#project-${projAssets[index + 1].link}` : null;
+                  index < projAssets.length - 1 ? `#anchor-${projAssets[index + 1].link}` : null;
                 return (
+                  <React.Fragment key={project.name}>
+                  {/* Non-sticky anchor at this card's natural position so the up/down
+                      buttons land correctly even when previous cards are stuck at top */}
+                  <div id={`anchor-${project.link}`} className="md:scroll-mt-[5rem]" aria-hidden="true" />
                   <div
-                    key={project.name}
                     id={`project-${project.link}`}
-                    className="md:sticky md:top-[5rem] pb-[2rem] md:pb-[8rem]"
-                    style={{ "--dx": `${index * 1.5}rem`, "--dy": `${index * 2.75}rem` }}
+                    className="md:sticky md:top-[5rem] pb-[2rem] md:pb-[8rem] md:pointer-events-none"
+                    style={{ "--dx": `${index * 1.5}rem`, "--dy": `${index * 2.75}rem` } as React.CSSProperties}
                   >
-                    <div className="md:translate-x-[var(--dx)] md:translate-y-[var(--dy)]">
+                    <div className="md:translate-x-[var(--dx)] md:translate-y-[var(--dy)] md:pointer-events-auto">
                     <ProjectItem
                       name={project.name}
                       company={project.company}
@@ -82,10 +85,9 @@ export default function Home() {
                     />
                     </div>
                   </div>
+                  </React.Fragment>
                 );
             })}
-            {/* Hold the cascade frozen for a beat at the end */}
-            <div className="hidden md:block h-[70vh]" aria-hidden />
           </div>
 
           {/* Footer — part of the Work section */}

@@ -1,6 +1,5 @@
 import React from 'react';
 import Windows95Button from './Windows95Button';
-import Image, { StaticImageData} from "next/image";
 import { icon } from "@/assets/icon";
 import { TransitionLink } from '@/utils/TransitionLink';
 

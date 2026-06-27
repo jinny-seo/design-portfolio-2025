@@ -2,16 +2,12 @@
 
 import { useEffect, useRef, useState } from "react";
 
-// Soft y2k holographic palette (matches the animated background)
 const SPARKLE_COLORS = ["#b9f5ea", "#a9c6f5", "#c9a9f2", "#f6b1e0", "#ffffff"];
 
-/**
- * Desktop-only custom cursor: a gradient orb that follows the pointer,
- * leaving a trail of little sparkles. Disabled on touch + reduced-motion.
- */
 export default function SparkleCursor() {
   const orbRef = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(false);
+  const [hovered, setHovered] = useState(false);
 
   useEffect(() => {
     const finePointer = window.matchMedia("(pointer: fine)").matches;
@@ -41,7 +37,7 @@ export default function SparkleCursor() {
     const onMove = (e: MouseEvent) => {
       const orb = orbRef.current;
       if (orb) {
-        orb.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`;
+        orb.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
       }
       const now = performance.now();
       if (now - lastSpawn > 18) {
@@ -52,13 +48,36 @@ export default function SparkleCursor() {
       }
     };
 
+    const onOver = (e: MouseEvent) => {
+      const el = e.target as Element;
+      setHovered(!!el.closest("a, button, [role='button'], [tabindex]"));
+    };
+
     window.addEventListener("mousemove", onMove);
+    document.addEventListener("mouseover", onOver);
     return () => {
       window.removeEventListener("mousemove", onMove);
+      document.removeEventListener("mouseover", onOver);
       document.documentElement.classList.remove("sparkle-cursor-active");
     };
   }, []);
 
   if (!active) return null;
-  return <div ref={orbRef} className="cursor-orb" aria-hidden="true" />;
+  return (
+    <div ref={orbRef} className="cursor-orb" aria-hidden="true">
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={hovered ? "/hover-cursor-hand.svg" : "/star-cursor.svg"}
+        alt=""
+        style={{
+          width: hovered ? 32 : 32,
+          height: hovered ? 32 : 32,
+          objectFit: "contain",
+          // offset hover cursor so fingertip (x=6) aligns with star tip (x=0)
+          marginLeft: hovered ? "-6px" : "0",
+          imageRendering: "pixelated",
+        }}
+      />
+    </div>
+  );
 }

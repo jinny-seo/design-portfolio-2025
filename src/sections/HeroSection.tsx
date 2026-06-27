@@ -18,9 +18,7 @@ export const HeroSection = () => {
                             <p className="subtitle-hero divider-hero-spacing">. . .</p>
                             <div className="flex flex-col w-full">
                                 <p className="max-w-[800px] lg:max-w-[836px] p-hero">
-                                    I'm a problem-solving creative who digs beyond the surface to uncover the problem worth solving. From B2B SaaS platforms to design systems built from the ground up, I turn complexity into clarity and ship what matters.
-                                </p>
-                                <p className="max-w-[800px] lg:max-w-[836px] p-hero">
+                                    From B2B SaaS platforms to design systems built from the ground up, I dig beyond the surface to turn complexity into clarity and ship what matters. A teacher and a creative at heart who's always looking for opportunities to make technical domains to make them a little more intuitive, a little more human.
                                 </p>
                                 {/* For smaller breakpoints */}
                                 <div className="flex flex-col md:flex-row gap-6 my-6 lg:hidden">

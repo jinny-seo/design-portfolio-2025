@@ -8,6 +8,16 @@ import StarField from "@/components/StarField";
 
 export const  metadata: Metadata = {
   metadataBase: new URL('https://jinnyseo.design'),
+  // Unlisted: reachable by direct link, but kept out of search results.
+  robots: {
+    index: false,
+    follow: false,
+    googleBot: {
+      index: false,
+      follow: false,
+      noimageindex: true,
+    },
+  },
   title: "Jinny Eunji Seo | Portfolio",
   description: "I'm a problem-solving creative who digs beyond the surface to uncover the problem worth solving. From B2B SaaS platforms to design systems built from the ground up, I turn complexity into clarity and ship what matters.",
   openGraph: {
@@ -43,6 +53,8 @@ export default function RootLayout({
     <html lang="en" className="scroll-smooth ">
       <body className={`antialiased `}>
           <div className="gradient-backdrop" aria-hidden="true" />
+          <div className="gradient-layer-2" aria-hidden="true" />
+          <div className="gradient-layer-3" aria-hidden="true" />
           <StarField />
           <SparkleCursor />
           {children}
