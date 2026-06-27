@@ -17,16 +17,18 @@ export const HeroSection = () => {
                             <p className="subtitle-hero">Enterprise Product Designer</p>
                             <p className="subtitle-hero divider-hero-spacing">. . .</p>
                             <div className="flex flex-col w-full">
-                                <p className="max-w-[800px] lg:max-w-[836px] p-hero">
-                                    From B2B SaaS platforms to design systems built from the ground up, I dig beyond the surface to turn complexity into clarity and ship what matters. A teacher and a creative at heart who's always looking for opportunities to make technical domains to make them a little more intuitive, a little more human.
-                                </p>
+                                <div className="max-w-[700px] lg:max-w-[836px] p-hero">
+                                <p className="pb-4">From B2B SaaS platforms to design systems built from the ground up, I dig beyond the surface to turn complexity into clarity and ship what matters. </p>
+                                <p>A teacher and a creative at heart, I strive to make technical domains a little more intuitive, a little more human.</p>
+                            </div>
                                 {/* For smaller breakpoints */}
                                 <div className="flex flex-col md:flex-row gap-6 my-6 lg:hidden">
                                     <div className="">
-                                        <ContactMeSection/>
+                                        {/* <ContactMeSection/> */}
+                                        
                                     </div>
                                     <div className="">
-                                        <InTheWildSection/>
+                                        {/* <InTheWildSection/> */}
                                     </div>
                                 </div>
                             </div>
@@ -37,8 +39,8 @@ export const HeroSection = () => {
                     {/* For larger breakpoints */}
                   
                     <div className="hidden lg:flex flex-col justify-center gap-12 pl-12 xl:pl-16 border-l border-slate-500 bg-red-500/0 p-hero max-w-[40%] min-w-[40%]">
-                        <ContactMeSection/>
-                        <InTheWildSection/>
+                        {/* <ContactMeSection/> */}
+                        {/* <InTheWildSection/> */}
                     </div>
                 </div>
             </div>

@@ -167,41 +167,31 @@ export default function PumpProject() {
       {/* Hero image: END */}
 
       {/* * * * * Section - What I've worked on: START * * * * */}
-      <CaseStudyTitleDivider title="What I've worked on @ Pump"/>
-      
-      <Windows95FrameInner>
-        <CardContainer fullWidth>
+      <CaseStudyTitleDivider title="Highlights"/>
           <CardSection>
-            {/* Legend */}
-            <div className="flex flex-wrap gap-x-6 gap-y-1 mb-6 text-base">
-              <span><span aria-hidden>✅</span> Shipped</span>
-              <span><span aria-hidden>🚧</span> In progress</span>
-              <span><span aria-hidden>🍼</span> Upcoming</span>
-            </div>
-
-            {/* Two columns on desktop, one on mobile — bulleted */}
-            <ul className="columns-1 md:columns-2 gap-x-8 text-lg list-disc pl-5">
-              {pumpWork.map((item, index) => (
-                <li key={index} className="mb-2 break-inside-avoid">
-                  <span aria-hidden className="select-none mr-1">{item.status}</span>
-                  {item.label}
-                  {item.anchor && (
+            {/* <ul className="columns-1 md:columns-2 gap-x-8 text-lg list-disc pl-5"> */}
+            <ul className="columns-1 gap-x-8">
+              {pumpWork
+                .filter((item) => item.anchor)
+                .map((item, index) => (
+                  <li key={index} className="mb-2 break-inside-avoid">
+                    {item.label}
                     <a
                       href={`#${item.anchor}`}
-                      className="font-Doto text-base text-blue-800 underline underline-offset-2 hover:no-underline whitespace-nowrap ml-2"
+                      className="ml-2 whitespace-nowrap font-Doto text-base text-blue-800 underline underline-offset-2 hover:no-underline"
                     >
                       View
                     </a>
-                  )}
-                </li>
-              ))}
+                  </li>
+                ))}
             </ul>
 
             <p className="mt-6 text-lg text-slate-700">+ Design systems &amp; tokens setup <span className="italic">(always ongoing)</span></p>
             
           </CardSection>
           
-        </CardContainer>
+          <CaseStudyTitleDivider title="And more that I've worked on..."/>
+        <Windows95FrameInner>
         <CaseStudyImage src={shoutouts} alt="Shoutouts from the Pump team" className="bg-transparent"/>
       </Windows95FrameInner>
       {/* Section - What I've worked on: END */}

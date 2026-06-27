@@ -44,11 +44,15 @@ body {
 /* ------- Transitions -------- */
 /* ---------------------------- */
 
-.page-transition {
+/* Only the page content fades + slides during route transitions. The gradient
+   background and starfield live outside .page-content, so they stay put the
+   whole time — no reload, no purple flash. */
+.page-content {
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+.page-transition .page-content {
   opacity: 0;
-  background: rgb(233, 213, 255);
   transform: translateY(40px);
-  /* filter: blur(10px); */
 }
 
 /* ---------------------------- */

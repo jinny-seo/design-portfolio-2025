@@ -50,12 +50,12 @@ export const Navigation = () => {
                 <li>
                     {/* Resume opens the PDF in a new tab on all breakpoints */}
                     <a href="/seo-resume.pdf" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 font-Doto">
-                        <div className={`flex flex-col justify-center gap-1 items-center pt-1 w-[72px] h-[72px] rounded-[3px] hover:bg-purple-600/20 group`}>
+                        <div className={`flex flex-col justify-center gap-1 items-center pt-1 w-[72px] h-[72px] rounded-[3px] group hover:bg-purple-600/20 lg:hover:bg-transparent`}>
                             {/* Default image - Hide on hover */}
                             <Image src={navImage.note} alt="" width={32} className={`object-cover group-hover:hidden`} />
                             {/* Hover image - Show on hover */}
                             <Image src={navImage.noteHover} alt="" width={32} className={`object-cover group-hover:block hidden`} />
-                            <span className="font-Tiny5 text-[0.82rem]">Resume</span>
+                            <span className="font-Tiny5 text-[0.82rem] px-1 rounded-[2px] lg:group-hover:bg-[#2e1065] lg:group-hover:text-white">Resume</span>
                         </div>
                     </a>
                 </li>

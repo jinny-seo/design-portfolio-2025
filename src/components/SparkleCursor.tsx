@@ -70,11 +70,11 @@ export default function SparkleCursor() {
         src={hovered ? "/hover-cursor-hand.svg" : "/star-cursor.svg"}
         alt=""
         style={{
-          width: hovered ? 32 : 32,
-          height: hovered ? 32 : 32,
+          width: hovered ? 24 : 32,
+          height: hovered ? 24 : 32,
           objectFit: "contain",
           // offset hover cursor so fingertip (x=6) aligns with star tip (x=0)
-          marginLeft: hovered ? "-6px" : "0",
+          marginLeft: hovered ? "-4px" : "0",
           imageRendering: "pixelated",
         }}
       />

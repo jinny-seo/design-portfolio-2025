@@ -57,7 +57,7 @@ export default function RootLayout({
           <div className="gradient-layer-3" aria-hidden="true" />
           <StarField />
           <SparkleCursor />
-          {children}
+          <div className="page-content">{children}</div>
 
       </body>
     </html>
